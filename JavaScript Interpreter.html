@@ -1,0 +1,86 @@
+<html class="gr__math_chapman_edu"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>JavaScript IDE Inka</title>
+<script>
+JSoutput = function(a) {
+    var str = "["
+    if (typeof(a)=="object" && a.length) {
+        for (var i=0; i < a.length; i++) 
+            if (typeof(a[i])=="object" && a[i].length) {
+                str += (i==0?"":" ")+"["
+                for (var j=0; j<a[i].length; j++) 
+                    str += a[i][j]+(j==a[i].length-1?
+                            "]"+(i==a.length-1?"]":",")+"\n":", ");
+            } else str += a[i]+(i==a.length-1?"]":", ");
+    } else str = a;
+    return str;
+}
+
+write = function(str) {
+    var outnode = document.getElementById("JSoutput");
+    outnode.value += JSoutput(str);
+}
+
+writeln = function(str) {
+    if (!str) str="";
+    var outnode = document.getElementById("JSoutput");
+    outnode.value += JSoutput(str)+"\n";
+}
+
+JSrun = function() {
+    var str;
+    var outnode = document.getElementById("JSoutput");
+    outnode.value = "";
+    d = new Date().getTime();
+    try {
+        with (Math) {
+            str = JSoutput(eval(document.getElementById("JSprogram").value));
+        }
+    } catch(e) {
+        str = e.name+" at line "+(e.lineNumber-56)+": "+e.message;
+    }
+    var tnode = document.getElementById("JStiming");
+    tnode.innerHTML = ""+(new Date().getTime()-d)/1000;
+    if (str != undefined) {outnode.value += str;}
+}
+
+keyUp = function(event){
+  if (event.which==77 && event.ctrlKey) JSrun();
+}
+</script>
+<style>td {background:white; vertical-align:top; border:1px solid black; padding:2px 10px}
+pre {margin:0}
+table {border-collapse:collapse; table-layout:fixed}
+body {
+	background:lightblue;
+	font-family:Arial;
+	background-color: #33FF66;
+}
+textarea {font-family:Lucida console}
+</style>
+</head>
+<div class="gr-top-z-index gr-top-zero" tabindex="-1"><div class="_30JeG _2_2SE" style="transform: translate(573px, 525px);"><div class="_2A3ER"><div class="_1y1wn _2R8DE undefined"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1L80j" tabindex="-1"></div></div></div><div class="_2-7o4"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1pbTT" data-action="editor" tabindex="-1"></div></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"><div class="_30JeG _2_2SE" style="transform: translate(638px, 540px);"><div class="_2A3ER"><div class="_1y1wn _2R8DE undefined"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1L80j" tabindex="-1"></div></div></div><div class="_2-7o4"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1pbTT" data-action="editor" tabindex="-1"></div></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"></div><body onLoad="JSrun()" data-gr-c-s-loaded="true"><!-- onpaste="return false;"-->
+<p>JavaScript IDE</p>
+
+<table width="100%">
+<tbody><tr><td><b>Type JavaScript</b>
+</td><td>
+<input type="button" value="Run (Ctrl-m)" onClick="JSrun()"> &nbsp; &nbsp;
+<b>Output</b> &nbsp; &nbsp; 
+Timing: <span id="JStiming">0</span> s
+</td></tr>
+<tr><td style="padding: 1px; width: auto; position: relative;" width="50%">
+<grammarly-ghost spellcheck="false"><div style="position: absolute; color: transparent; overflow: hidden; white-space: pre-wrap; box-sizing: border-box; height: 480px; width: 634px; z-index: 0; border-width: 2px; border-style: solid; padding: 0px 1px; margin: 2px 0px 1px 1px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; line-height: 19px; top: 0px; left: 0px;" data-id="29ab2bfe-6986-3408-684c-02d2665ec07d" data-gramm_id="29ab2bfe-6986-3408-684c-02d2665ec07d" data-gramm="gramm" data-gramm_editor="true" class="gr_ver_2" gramm="true" contenteditable="true"><span style="display: inline-block; color: transparent; overflow: hidden; text-align: left; float: initial; clear: none; box-sizing: border-box; vertical-align: baseline; white-space: pre-wrap; width: 100%; margin: 0px; padding: 0px 3px 0px 0px; border: 0px none; font-size: 16px; font-family: monospace; font-weight: 700; letter-spacing: normal; text-shadow: none; height: 476px;"><gr_block style="display: inline;" p="0,66">// Find the maximum value in a list of numbers<br><br>a = 5;<br>writeln(a);</gr_block></span><br></div></grammarly-ghost><textarea id="JSprogram" style="height: 5in; width: 100%; font-family: monospace; font-weight: bold; background: transparent none repeat scroll 0% 0% !important; z-index: auto; position: relative; line-height: 19px; font-size: 16px; transition: none 0s ease 0s;" onKeyUp="keyUp(event)" data-gramm="true" data-txt_gramm_id="29ab2bfe-6986-3408-684c-02d2665ec07d" data-gramm_id="29ab2bfe-6986-3408-684c-02d2665ec07d" spellcheck="false" data-gramm_editor="true">// Edit tulisan di bawah menggunakan bahasa JavaScript, output ada di samping setelah klik tombol "Run" atau ctrl+m.
+
+a = 5;
+writeln(a);</textarea><grammarly-btn><div style="z-index: 2; transform: translate(603px, 450px);" class="_1BN1N Kzi1t MoE_1 _2DJZN"><div class="_1HjH7"><div title="Protected by Grammarly" class="_3qe6h">&nbsp;</div></div></div></grammarly-btn>
+</td>
+<td style="padding:1px" width="50%">
+<textarea id="JSoutput" style="height:5in; width:100%; font-family: monospace; font-size: 16; font-weight: bold;">5
+</textarea></td>
+</tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p>Oleh <b>INKA GUSTIANY MALLISA | D42114517</b> </p>
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span><div><div class="gr_-editor gr-iframe-first-load" style="display: none;"><div class="gr_-editor_back"></div><iframe class="gr_-ifr gr-_dialog-content"></iframe></div></div><grammarly-card><div></div></grammarly-card></html>
